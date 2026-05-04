@@ -1,0 +1,330 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --or:#E8601C;--orl:#FFF0E8;--orm:#F4926A;
+  --br:#2D1A0E;--brm:#7A4F35;--brl:#C4956A;
+  --cr:#FDF6ED;--crs:#FFFAF3;
+  --bd:#EAD9C6;--mu:#A07855;
+  --gn:#2D6A4F;--gnl:#E8F5EE;
+  --yw:#F2C94C;
+}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--color-background-secondary,#f5f5f5);display:flex;flex-direction:column;align-items:center;padding:1rem 0 2rem}
+.proto-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-secondary);margin-bottom:.75rem;text-align:center}
+.nav-dots{display:flex;gap:6px;justify-content:center;margin-top:.75rem}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--color-border-secondary,#ccc);cursor:pointer;transition:all .2s}
+.dot.active{background:var(--or);width:18px;border-radius:4px}
+
+.phone{
+  width:280px;
+  background:var(--crs);
+  border-radius:40px;
+  border:8px solid var(--br);
+  overflow:hidden;
+  position:relative;
+}
+.notch{height:26px;background:var(--br);display:flex;align-items:center;justify-content:center}
+.notch-pill{width:64px;height:12px;background:#1A0F07;border-radius:8px}
+.screens-track{display:flex;transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.screen{width:264px;min-height:540px;flex-shrink:0;position:relative;overflow:hidden;background:var(--cr)}
+
+/* ─ SCREEN 1 SPLASH ─ */
+.s1{background:var(--or);display:flex;flex-direction:column}
+.s1-top{flex:1;display:flex;align-items:center;justify-content:center;padding-top:1.5rem}
+.bowl{width:110px;height:110px}
+.s1-bottom{padding:1.5rem 1.25rem 1.75rem;color:#fff}
+.s1-logo{font-family:'Fraunces',serif;font-size:2rem;font-weight:700;letter-spacing:-.03em;line-height:1}
+.s1-logo em{font-style:italic;opacity:.65}
+.s1-tag{font-size:.72rem;opacity:.7;margin:.35rem 0 1.25rem;line-height:1.5}
+.s1-btn{display:block;background:#fff;color:var(--or);text-align:center;padding:.7rem;border-radius:14px;font-weight:600;font-size:.85rem;cursor:pointer;margin-bottom:.6rem}
+.s1-ghost{text-align:center;color:rgba(255,255,255,.55);font-size:.75rem;cursor:pointer;padding:.3rem}
+
+/* ─ SCREEN 2 HOME ─ */
+.s2-bar{padding:.9rem 1rem .4rem;display:flex;align-items:center;justify-content:space-between}
+.greet{font-size:.65rem;color:var(--mu)}
+.uname{font-family:'Fraunces',serif;font-size:1rem;font-weight:700;margin-top:1px}
+.ava{width:32px;height:32px;border-radius:50%;background:var(--or);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#fff}
+.srch{margin:.3rem .9rem .5rem;background:#fff;border:1.5px solid var(--bd);border-radius:11px;padding:.55rem .8rem;display:flex;align-items:center;gap:.4rem;font-size:.72rem;color:var(--mu)}
+.cats{display:flex;gap:.45rem;padding:.3rem .9rem .5rem;overflow:hidden}
+.cat{flex-shrink:0;padding:.3rem .7rem;border-radius:100px;font-size:.66rem;font-weight:600;border:1.5px solid var(--bd);background:#fff;color:var(--brm)}
+.cat.on{background:var(--or);border-color:var(--or);color:#fff}
+.feat{margin:0 .9rem .65rem;background:var(--or);border-radius:16px;padding:.85rem;color:#fff;position:relative;overflow:hidden;cursor:pointer}
+.ft-lbl{font-size:.6rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;opacity:.7;margin-bottom:.2rem}
+.ft-ttl{font-family:'Fraunces',serif;font-size:.95rem;font-weight:700;line-height:1.2;margin-bottom:.2rem}
+.ft-sub{font-size:.65rem;opacity:.72;margin-bottom:.7rem}
+.ft-btn{display:inline-block;background:#fff;color:var(--or);font-size:.67rem;font-weight:700;padding:.28rem .65rem;border-radius:7px}
+.ft-deco{position:absolute;right:.9rem;bottom:.3rem;font-size:2.8rem;opacity:.2;transform:rotate(-10deg)}
+.sec-ttl{padding:.5rem .9rem .25rem;font-family:'Fraunces',serif;font-size:.9rem;font-weight:700}
+.items{display:flex;gap:.6rem;padding:0 .9rem}
+.icard{width:88px;background:#fff;border-radius:12px;border:1.5px solid var(--bd);overflow:hidden;cursor:pointer}
+.icard:hover{border-color:var(--or)}
+.iimg{height:52px;display:flex;align-items:center;justify-content:center;font-size:1.6rem}
+.iimg.a{background:#FFF3E0}.iimg.b{background:#FFF8E8}.iimg.c{background:#F0FFF0}
+.iinfo{padding:.35rem .45rem}
+.iname{font-size:.62rem;font-weight:600;line-height:1.3}
+.iprice{font-size:.65rem;color:var(--or);font-weight:700;margin-top:1px}
+
+/* ─ SCREEN 3 MENU ─ */
+.s3-hero{height:100px;background:var(--or);display:flex;align-items:flex-end;padding:.65rem .9rem;position:relative}
+.bk{position:absolute;top:.55rem;left:.55rem;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-size:.75rem;color:#fff;cursor:pointer}
+.rname{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700;color:#fff}
+.rmeta{font-size:.62rem;color:rgba(255,255,255,.68);margin-top:2px}
+.tabs{display:flex;border-bottom:1.5px solid var(--bd);background:#fff}
+.tab{flex:1;text-align:center;padding:.55rem .2rem;font-size:.67rem;font-weight:600;color:var(--mu);border-bottom:2px solid transparent;margin-bottom:-1.5px;cursor:pointer}
+.tab.on{color:var(--or);border-bottom-color:var(--or)}
+.mcat{padding:.55rem .9rem .2rem;font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mu)}
+.mitem{display:flex;align-items:center;gap:.65rem;padding:.6rem .9rem;border-bottom:1px solid var(--bd)}
+.mico{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.35rem;flex-shrink:0}
+.mico.a{background:#FFF3E0}.mico.b{background:#FFF8E8}.mico.c{background:#F0F9FF}
+.minfo{flex:1}
+.mn{font-size:.75rem;font-weight:600;line-height:1.3}
+.md{font-size:.6rem;color:var(--mu);margin-top:1px}
+.mrt{display:flex;flex-direction:column;align-items:flex-end;gap:.3rem}
+.mp{font-size:.78rem;font-weight:700;color:var(--br)}
+.madd{width:22px;height:22px;border-radius:7px;background:var(--or);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.95rem;cursor:pointer}
+.cart-bar{background:var(--br);padding:.65rem .9rem;display:flex;align-items:center;justify-content:space-between;cursor:pointer}
+.cb-l{display:flex;align-items:center;gap:.4rem}
+.cb-n{width:20px;height:20px;border-radius:50%;background:var(--or);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700}
+.cb-t{font-size:.73rem;color:#fff;font-weight:600}
+.cb-p{font-size:.78rem;font-weight:700;color:var(--yw)}
+
+/* ─ SCREEN 4 CART ─ */
+.s4hdr{padding:.9rem .9rem .45rem;display:flex;align-items:center;gap:.65rem}
+.bkbtn{width:28px;height:28px;border-radius:50%;background:var(--crs);border:1.5px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:.75rem;cursor:pointer}
+.s4ttl{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700}
+.citem{display:flex;align-items:center;gap:.65rem;padding:.6rem .9rem;border-bottom:1px solid var(--bd);background:#fff}
+.cico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.cico.a{background:#FFF3E0}.cico.b{background:#F0F9FF}
+.cin{flex:1}
+.cnm{font-size:.75rem;font-weight:600}
+.cfr{font-size:.6rem;color:var(--mu)}
+.cqty{display:flex;align-items:center;gap:.35rem}
+.qb{width:20px;height:20px;border-radius:6px;background:var(--orl);color:var(--or);display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;cursor:pointer}
+.qn{font-size:.72rem;font-weight:700;min-width:12px;text-align:center}
+.cprice{font-size:.78rem;font-weight:700;min-width:36px;text-align:right}
+.dcard{margin:.6rem .9rem;background:#fff;border-radius:13px;border:1.5px solid var(--bd);padding:.65rem .9rem}
+.dlbl{font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mu);margin-bottom:.4rem}
+.dopt{display:flex;align-items:center;gap:.45rem;padding:.3rem 0}
+.drad{width:15px;height:15px;border-radius:50%;border:2px solid var(--bd);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.drad.sel{border-color:var(--or)}
+.drad.sel::after{content:'';width:7px;height:7px;border-radius:50%;background:var(--or)}
+.dtxt{flex:1;font-size:.72rem;font-weight:500}
+.dtime{font-size:.64rem;color:var(--mu)}
+.trow{display:flex;justify-content:space-between;padding:.3rem .9rem;font-size:.72rem;color:var(--mu)}
+.trow.fin{font-weight:700;color:var(--br);font-size:.82rem;border-top:1.5px solid var(--bd);padding-top:.55rem;margin-top:.15rem}
+.pay-btn{background:var(--or);padding:.8rem .9rem;text-align:center;font-weight:700;font-size:.82rem;color:#fff;cursor:pointer}
+
+/* ─ SCREEN 5 TRACK ─ */
+.s5hdr{padding:.9rem .9rem .5rem}
+.oid{font-size:.63rem;color:var(--mu);margin-bottom:.12rem}
+.s5ttl{font-family:'Fraunces',serif;font-size:1rem;font-weight:700}
+.eta{display:flex;align-items:center;gap:.5rem;background:var(--orl);border-radius:11px;padding:.55rem .8rem;margin:0 .9rem .65rem}
+.etaico{font-size:1rem;flex-shrink:0}
+.etal{font-size:.6rem;color:var(--mu);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.etat{font-family:'Fraunces',serif;font-size:1rem;font-weight:700;color:var(--or)}
+.tcard{margin:0 .9rem;background:#fff;border-radius:16px;border:1.5px solid var(--bd);overflow:hidden}
+.tmap{height:80px;background:#E8EDD8;display:flex;align-items:center;justify-content:center;position:relative;font-size:1.2rem;color:#aaa}
+.mpin{position:absolute;top:28%;left:42%;width:22px;height:22px;background:var(--or);border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2.5px solid #fff}
+.tsteps{padding:.65rem .9rem}
+.step{display:flex;gap:.65rem;align-items:flex-start;margin-bottom:.45rem}
+.sdot{width:18px;height:18px;border-radius:50%;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:.55rem;font-weight:700;color:#fff}
+.sdot.done{background:var(--gn)}
+.sdot.go{background:var(--or)}
+.sdot.wait{background:var(--bd)}
+.sline{width:1px;height:12px;background:var(--bd);margin-left:8px;margin-top:-4px;margin-bottom:-4px;display:block}
+.slbl{font-size:.72rem;font-weight:600;color:var(--br)}
+.ssub{font-size:.6rem;color:var(--mu);margin-top:1px}
+.done-btn{background:var(--gn);padding:.8rem .9rem;text-align:center;font-weight:700;font-size:.82rem;color:#fff;cursor:pointer;border-radius:0}
+</style>
+
+<h2 class="sr-only">CampusBite — interactive mobile app prototype with 5 screens: splash, home, menu, cart, and order tracking.</h2>
+
+<div class="proto-label">CampusBite — tap to interact</div>
+
+<div class="phone">
+  <div class="notch"><div class="notch-pill"></div></div>
+  <div style="overflow:hidden">
+    <div class="screens-track" id="track">
+
+      <!-- S1 SPLASH -->
+      <div class="screen s1">
+        <div class="s1-top">
+          <svg class="bowl" viewBox="0 0 110 110" fill="none">
+            <ellipse cx="55" cy="68" rx="40" ry="16" fill="rgba(255,255,255,.12)"/>
+            <path d="M18 61 Q18 93 55 93 Q92 93 92 61Z" fill="rgba(255,255,255,.22)"/>
+            <ellipse cx="55" cy="61" rx="37" ry="11" fill="rgba(255,255,255,.32)"/>
+            <circle cx="42" cy="55" r="7" fill="#F2C94C" opacity=".9"/>
+            <circle cx="55" cy="51" r="9" fill="#fff" opacity=".35"/>
+            <circle cx="68" cy="55" r="6" fill="#C94E12" opacity=".85"/>
+            <path d="M50 39 Q55 28 60 39" stroke="rgba(255,255,255,.5)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="s1-bottom">
+          <div class="s1-logo">Campus<em>Bite</em></div>
+          <div class="s1-tag">Hot food, fast delivery.<br>Skip the queue, not the meal.</div>
+          <div class="s1-btn" onclick="go(1)">Get started →</div>
+          <div class="s1-ghost" onclick="go(1)">I already have an account</div>
+        </div>
+      </div>
+
+      <!-- S2 HOME -->
+      <div class="screen">
+        <div class="s2-bar">
+          <div><div class="greet">Good afternoon 👋</div><div class="uname">Priya</div></div>
+          <div class="ava">P</div>
+        </div>
+        <div class="srch">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="#A07855" stroke-width="1.5"/><path d="M11 11l3 3" stroke="#A07855" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Search dishes or canteens…
+        </div>
+        <div class="cats">
+          <div class="cat on">All</div>
+          <div class="cat">🍚 Rice</div>
+          <div class="cat">🍜 Noodles</div>
+          <div class="cat">🥗 Healthy</div>
+        </div>
+        <div class="feat" onclick="go(2)">
+          <div class="ft-lbl">Today's special</div>
+          <div class="ft-ttl">Masala Dosa<br>Combo Meal</div>
+          <div class="ft-sub">Central Canteen · Ready in 12 min</div>
+          <div class="ft-btn">Order now</div>
+          <div class="ft-deco">🫓</div>
+        </div>
+        <div class="sec-ttl">Popular right now</div>
+        <div class="items">
+          <div class="icard" onclick="go(2)">
+            <div class="iimg a">🍛</div>
+            <div class="iinfo"><div class="iname">Veg Biryani</div><div class="iprice">₹80</div></div>
+          </div>
+          <div class="icard" onclick="go(2)">
+            <div class="iimg b">🥪</div>
+            <div class="iinfo"><div class="iname">Sandwich</div><div class="iprice">₹65</div></div>
+          </div>
+          <div class="icard" onclick="go(2)">
+            <div class="iimg c">🥗</div>
+            <div class="iinfo"><div class="iname">Salad Bowl</div><div class="iprice">₹70</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- S3 MENU -->
+      <div class="screen" style="display:flex;flex-direction:column">
+        <div class="s3-hero">
+          <div class="bk" onclick="go(1)">←</div>
+          <div><div class="rname">Central Canteen</div><div class="rmeta">⭐ 4.6 · 200m · Open till 9 PM</div></div>
+        </div>
+        <div class="tabs">
+          <div class="tab on">Menu</div>
+          <div class="tab">Info</div>
+          <div class="tab">Reviews</div>
+        </div>
+        <div style="flex:1">
+          <div class="mcat">Rice Meals</div>
+          <div class="mitem">
+            <div class="mico a">🍛</div>
+            <div class="minfo"><div class="mn">Veg Biryani</div><div class="md">Basmati, veg, raita</div></div>
+            <div class="mrt"><div class="mp">₹80</div><div class="madd" onclick="go(3)">+</div></div>
+          </div>
+          <div class="mitem">
+            <div class="mico b">🍚</div>
+            <div class="minfo"><div class="mn">Dal Tadka Rice</div><div class="md">Lentils, ghee, papad</div></div>
+            <div class="mrt"><div class="mp">₹60</div><div class="madd">+</div></div>
+          </div>
+          <div class="mcat">South Indian</div>
+          <div class="mitem">
+            <div class="mico a">🫓</div>
+            <div class="minfo"><div class="mn">Masala Dosa</div><div class="md">Crispy, chutneys</div></div>
+            <div class="mrt"><div class="mp">₹55</div><div class="madd" onclick="go(3)">+</div></div>
+          </div>
+          <div class="mitem">
+            <div class="mico c">🍲</div>
+            <div class="minfo"><div class="mn">Idli Sambar</div><div class="md">3 idlis, fresh sambar</div></div>
+            <div class="mrt"><div class="mp">₹40</div><div class="madd">+</div></div>
+          </div>
+        </div>
+        <div class="cart-bar" onclick="go(3)">
+          <div class="cb-l"><div class="cb-n">2</div><span class="cb-t">View cart</span></div>
+          <span class="cb-p">₹135</span>
+        </div>
+      </div>
+
+      <!-- S4 CART -->
+      <div class="screen" style="display:flex;flex-direction:column">
+        <div class="s4hdr">
+          <div class="bkbtn" onclick="go(2)">←</div>
+          <div class="s4ttl">Your order</div>
+        </div>
+        <div class="citem">
+          <div class="cico a">🍛</div>
+          <div class="cin"><div class="cnm">Veg Biryani</div><div class="cfr">Central Canteen</div></div>
+          <div class="cqty"><div class="qb">−</div><div class="qn">1</div><div class="qb">+</div></div>
+          <div class="cprice">₹80</div>
+        </div>
+        <div class="citem">
+          <div class="cico b">🫓</div>
+          <div class="cin"><div class="cnm">Masala Dosa</div><div class="cfr">Central Canteen</div></div>
+          <div class="cqty"><div class="qb">−</div><div class="qn">1</div><div class="qb">+</div></div>
+          <div class="cprice">₹55</div>
+        </div>
+        <div class="dcard">
+          <div class="dlbl">Deliver to</div>
+          <div class="dopt"><div class="drad sel"></div><div class="dtxt">Hostel Block A – 214</div><div class="dtime">~15 min</div></div>
+          <div class="dopt"><div class="drad"></div><div class="dtxt">Pickup at canteen</div><div class="dtime">~8 min</div></div>
+        </div>
+        <div class="trow"><span>Subtotal</span><span>₹135</span></div>
+        <div class="trow"><span>Delivery fee</span><span>₹10</span></div>
+        <div class="trow"><span>Platform fee</span><span>₹5</span></div>
+        <div class="trow fin"><span>Total</span><span>₹150</span></div>
+        <div style="flex:1"></div>
+        <div class="pay-btn" onclick="go(4)">Place order · ₹150</div>
+      </div>
+
+      <!-- S5 TRACKING -->
+      <div class="screen" style="display:flex;flex-direction:column">
+        <div class="s5hdr">
+          <div class="oid">Order #CB-2041</div>
+          <div class="s5ttl">On the way! 🎉</div>
+        </div>
+        <div class="eta">
+          <div class="etaico">🛵</div>
+          <div><div class="etal">Estimated arrival</div><div class="etat">12 minutes</div></div>
+        </div>
+        <div class="tcard">
+          <div class="tmap"><div class="mpin"></div>🗺</div>
+          <div class="tsteps">
+            <div class="step"><div class="sdot done">✓</div><div><div class="slbl">Order confirmed</div><div class="ssub">1:32 PM</div></div></div>
+            <span class="sline"></span>
+            <div class="step"><div class="sdot done">✓</div><div><div class="slbl">Preparing food</div><div class="ssub">1:34 PM</div></div></div>
+            <span class="sline"></span>
+            <div class="step"><div class="sdot go">↑</div><div><div class="slbl">Out for delivery</div><div class="ssub">Heading to Block A…</div></div></div>
+            <span class="sline"></span>
+            <div class="step"><div class="sdot wait"></div><div><div class="slbl">Delivered</div><div class="ssub">Room 214, Block A</div></div></div>
+          </div>
+        </div>
+        <div style="flex:1"></div>
+        <div class="done-btn" onclick="go(1)">Back to home ↩</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="nav-dots">
+  <div class="dot active" onclick="go(0)"></div>
+  <div class="dot" onclick="go(1)"></div>
+  <div class="dot" onclick="go(2)"></div>
+  <div class="dot" onclick="go(3)"></div>
+  <div class="dot" onclick="go(4)"></div>
+</div>
+
+<script>
+let cur=0;
+const labels=['Splash','Home','Menu','Cart','Track'];
+function go(n){
+  cur=n;
+  document.getElementById('track').style.transform='translateX(-'+n*264+'px)';
+  document.querySelectorAll('.dot').forEach((d,i)=>{d.classList.toggle('active',i===n)});
+  document.querySelector('.proto-label').textContent=labels[n]+' — screen '+(n+1)+' of 5';
+}
+</script>
